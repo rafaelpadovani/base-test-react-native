@@ -11,6 +11,9 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import reducer from './app/reducers';
 import AppContainer from './app/containers/AppContainer';
+import JobsScreen from './app/containers/JobsScreen.js';
+import { StackNavigator } from "react-navigation";
+
 
 const loggerMiddleware = createLogger({predicate: (getState, action) => __DEV__});
 

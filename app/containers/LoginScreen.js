@@ -36,17 +36,10 @@ class LoginScreen extends Component {
     const { username, password, isLogged, jobs } = this.state;
     // this.props.login(username, password);
     this.props.login('', '');
-    // if (this.props.user.loggedIn.toString() == 'true' {
-
     // if (this.props.user.loggedIn.toString() == 'true') {
       this.setState({isLogged: this.props.user.loggedIn.toString()});
-      this.props.getJobsHandler(1);
+      // this.props.getJobsHandler(this.props.user.id);
     // }
-    // }
-
-    // this.props.navigation.navigate('JobsSc');
-    // if (this.props.user.loggedIn.toString() == 'true') {
-    //   navigate('Jobs');
     // }
   }
 
@@ -56,7 +49,8 @@ class LoginScreen extends Component {
 
 
     let screen = null;
-    if (this.state.isLogged) {
+    if (this.props.user.loggedIn === true && this.props.user.id !== 0 && this.props.user.id !== null) {
+        this.props.getJobsHandler(this.props.user.id);
         screen = (
           <JobsScreen {...this.props}/>
         )

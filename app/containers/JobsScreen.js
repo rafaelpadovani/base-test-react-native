@@ -134,13 +134,15 @@ export default class JobsScreen extends Component {
     );
   }
 
-  sortByTime(array){
+  sortByTime(array){ // Bubble sort
     let dateString1 = '';
     let currentDate1 = '';
     let dateString2 = '';
     let currentDate2 = '';
     var swapped;
+    var temp = '';
     do {
+      swapped = false;
       for (var i=0; i < array.length-1; i++) {
         dateString1 = array[i].pickupDate + '';
         currentDate1 = dateString1.slice(0, 4);
@@ -148,46 +150,51 @@ export default class JobsScreen extends Component {
         dateString2 = array[i+1].pickupDate + '';
         currentDate2 = dateString2.slice(0, 4);
         currentDate2 = parseInt(currentDate2);
-        if (currentDate1 > currentDate2) { //year greater
-          var temp = array[i];
+        if (currentDate1 < currentDate2) { //year greater
+          temp = array[i];
           array[i] = array[i+1];
           array[i+1] = temp;
+          swapped = true;
         }else if (currentDate1 === currentDate2) { //year equal
           currentDate1 = dateString1.slice(5, 7); //get month
           currentDate1 = parseInt(currentDate1);
           currentDate2 = dateString2.slice(5, 7);
           currentDate2 = parseInt(currentDate2);
-          if (currentDate1 > currentDate2) { //month greater
+          if (currentDate1 < currentDate2) { //month greater
             temp = array[i];
             array[i] = array[i+1];
             array[i+1] = temp;
+            swapped = true;
           }else if (currentDate1 === currentDate2) { // month equal
             currentDate1 = dateString1.slice(8, 10); // get day
             currentDate1 = parseInt(currentDate1);
             currentDate2 = dateString2.slice(8, 10);
             currentDate2 = parseInt(currentDate2);
-            if (currentDate1 > currentDate2) { // day greater
+            if (currentDate1 < currentDate2) { // day greater
               temp = array[i];
               array[i] = array[i+1];
               array[i+1] = temp;
+              swapped = true;
             }else if (currentDate1 === currentDate2) { // day equal
               currentDate1 = dateString1.slice(11, 13); // get hour
               currentDate1 = parseInt(currentDate1);
               currentDate2 = dateString2.slice(11, 13);
               currentDate2 = parseInt(currentDate2);
-              if (currentDate1 > currentDate2) { // hour greater
+              if (currentDate1 < currentDate2) { // hour greater
                 temp = array[i];
                 array[i] = array[i+1];
                 array[i+1] = temp;
+                swapped = true;
               }else if (currentDate1 === currentDate2) { // hour equal
                 currentDate1 = dateString1.slice(14, 16); // get minutes
                 currentDate1 = parseInt(currentDate1);
                 currentDate2 = dateString2.slice(14, 16);
                 currentDate2 = parseInt(currentDate2);
-                if (currentDate1 > currentDate2) { // minutes greater
+                if (currentDate1 < currentDate2) { // minutes greater
                   temp = array[i];
                   array[i] = array[i+1];
                   array[i+1] = temp;
+                  swapped = true;
                 }
               }
             }

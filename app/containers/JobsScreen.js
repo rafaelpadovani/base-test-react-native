@@ -4,6 +4,7 @@ import { Container, Header, Content, Button, List, ListItem, Text, Left, Body, R
 import styleLogin from './LoginScreenStyle.js';
 import styleJobs from './ListStyle.js';
 import Accordion from 'react-native-collapsible/Accordion';
+import { StatusBar } from 'react-native'
 
 const Dimensions = require('Dimensions');
 
@@ -223,6 +224,7 @@ export default class JobsScreen extends Component {
                 </Body>
               <Right />
             </Header>
+            <StatusBar barStyle = "light-content" />
             <ScrollView contentContainerStyle={{
                 flexGrow: 1,
                 justifyContent: 'space-between'

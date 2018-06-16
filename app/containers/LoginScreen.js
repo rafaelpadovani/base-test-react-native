@@ -7,6 +7,7 @@ import JobsScreen from './JobsScreen.js';
 import {
   AppRegistry,
 } from 'react-native';
+import { StatusBar } from 'react-native'
 
 
 const {
@@ -57,6 +58,7 @@ class LoginScreen extends Component {
     }else {
       screen = (
         <View style={{marginTop: 20, marginLeft: 20, marginRight: 20}}>
+          <StatusBar barStyle = "dark-content" />
           <View style={styleLogin.container}>
             <Container style={styleLogin.imageStyle}>
               <Image source={{uri: uriImage}} style={{height: 60, width: 160, resizeMode: 'contain', alignItems:'center'}}/>

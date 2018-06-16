@@ -17,28 +17,37 @@ header: {
   borderBottomWidth: 0.5,
   borderBottomColor: '#ccc',
 },
+info: {
+  flexWrap: 'wrap',
+  width: width*.5-20,
+},
 headerText: {
   textAlign: 'left',
   fontSize: 35,
+  fontWeight: '500'
+},
+headerTextPercent: {
+  textAlign: 'left',
+  fontSize: 20,
   fontWeight: '500'
 },
 headerTextName: {
   textAlign: 'left',
   fontSize: 20,
   fontWeight: '500',
-  marginLeft: 45
+  marginLeft: 0
 },
 headerTextTime: {
   textAlign: 'left',
   fontSize: 14,
   fontWeight: '500',
-  marginLeft: 45
+  marginLeft: 0
 },
 headerTitleAddress: {
   textAlign: 'left',
   fontSize: 14,
   fontWeight: '500',
-  marginLeft: 45,
+  marginLeft: 0,
   color: '#616161',
   flex: 1,
   flexWrap: 'wrap',
@@ -48,8 +57,9 @@ headerTextAddress: {
   textAlign: 'left',
   fontSize: 14,
   fontWeight: '500',
-  marginLeft: 45,
+  marginLeft: 0,
   color: '#616161',
+  width: width*.3
 },
 content: {
   padding: 0

@@ -3,11 +3,12 @@ import ReactNative from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { Container, Header, Content, Button, Text, Form, Item, Input, Label, Thumbnail } from 'native-base';
 import styleLogin from './LoginScreenStyle.js';
+import styleLoader from './loaderStyle.js';
 import JobsScreen from './JobsScreen.js';
 import {
   AppRegistry,
 } from 'react-native';
-import { StatusBar } from 'react-native'
+import { StatusBar, ActivityIndicator } from 'react-native'
 
 
 const {
@@ -24,7 +25,9 @@ class LoginScreen extends Component {
     username: '',
     password: '',
     isLogged: false,
-    jobs: null
+    jobs: null,
+    animating: false,
+    modalVisible: false
   }
 
   constructor() {
@@ -33,15 +36,18 @@ class LoginScreen extends Component {
     this.onPress = this.onPress.bind(this);
   }
 
+
   onPress() {
     const { username, password, isLogged, jobs } = this.state;
-    // this.props.login(username, password);
-    this.props.login('', '');
-    // if (this.props.user.loggedIn.toString() == 'true') {
-      this.setState({isLogged: this.props.user.loggedIn.toString()});
-      // this.props.getJobsHandler(this.props.user.id);
-    // }
-    // }
+    this.setState({ animating: true });
+    this.props.login(username, password);
+    // this.props.login('', '');
+    if (this.props.user.loggedIn === true) {
+      this.setState({ animating: false });
+    }
+
+    this.setState({isLogged: this.props.user.loggedIn.toString()});
+
   }
 
 
@@ -56,8 +62,14 @@ class LoginScreen extends Component {
           <JobsScreen {...this.props}/>
         )
     }else {
+      const animating = this.state.animating
       screen = (
         <View style={{marginTop: 20, marginLeft: 20, marginRight: 20}}>
+          <ActivityIndicator
+             animating = {animating}
+             color = '#bc2b78'
+             size = "large"
+             style = {styleLoader.activityIndicator}/>
           <StatusBar barStyle = "dark-content" />
           <View style={styleLogin.container}>
             <Container style={styleLogin.imageStyle}>
@@ -73,6 +85,7 @@ class LoginScreen extends Component {
               <Item floatingLabel>
                 <Label>Password</Label>
                 <Input
+                  secureTextEntry={true}
                   value={this.state.password}
                   onChangeText={password => this.setState({password})} />
               </Item>
@@ -85,7 +98,7 @@ class LoginScreen extends Component {
               success>
               <Text>Login</Text>
             </Button>
-            <Text>Logged in: {this.props.user.loggedIn.toString()}</Text>
+
           </View>
         </View>
       )

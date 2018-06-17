@@ -4,7 +4,8 @@ import { Container, Header, Content, Button, List, ListItem, Text, Left, Body, R
 import styleLogin from './LoginScreenStyle.js';
 import styleJobs from './ListStyle.js';
 import Accordion from 'react-native-collapsible/Accordion';
-import { StatusBar } from 'react-native'
+import { StatusBar } from 'react-native';
+
 
 const Dimensions = require('Dimensions');
 
@@ -12,7 +13,7 @@ let { heightH, widthW } = Dimensions.get("window");
 
 let SECTIONS2 = [];
 
-const SECTIONS = [
+const SECTIONS = [ // TEST
   {
     title: '£85',
     name: 'John Snow',
@@ -71,6 +72,7 @@ export default class JobsScreen extends Component {
 
     let dateString = section.pickupDate + '';
     let currentDate = dateString.slice(0, 10);
+    let dayString = dateString.slice(8, 10);
     let gsDayNames = [
       'Sunday',
       'Monday',
@@ -104,6 +106,8 @@ export default class JobsScreen extends Component {
             <Text style={styleJobs.headerTextName}>{section.name}</Text>
             <View style={{flex: 1, flexDirection: 'row'}}>
               <Text style={styleJobs.headerTextTime}>{dayName}</Text>
+              <Text style={styleJobs.headerTextTime}>, </Text>
+              <Text style={styleJobs.headerTextTime}>{dayString}</Text>
               <Text style={styleJobs.headerTextTime}> at </Text>
               <Text style={styleJobs.headerTextTime}>{shortHour}</Text>
             </View>
@@ -234,9 +238,7 @@ export default class JobsScreen extends Component {
                 renderHeader={this._renderHeader}
                 renderContent={this._renderContent}
               />
-              <Text>Logged in: {this.props.user.loggedIn.toString()}</Text>
-              <Text>ID: {this.props.user.id}</Text>
-              <Text>Jobs: {this.props.jobs[0].cost}</Text>
+            
             </ScrollView>
 
     </View>

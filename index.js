@@ -14,6 +14,7 @@ import AppContainer from './app/containers/AppContainer';
 import JobsScreen from './app/containers/JobsScreen.js';
 import { StackNavigator } from "react-navigation";
 
+console.disableYellowBox = true;
 
 const loggerMiddleware = createLogger({predicate: (getState, action) => __DEV__});
 

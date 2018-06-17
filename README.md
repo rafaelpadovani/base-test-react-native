@@ -1,10 +1,7 @@
-# base-test-react-native
 React native mobile app example.
 
-Install:
-npm install
+Install: npm install
 
-Run:
-npm start
+Run: npm start
 
 Navigate to /ios folder and open the .xcodeproj file in Xcode, then start the application.

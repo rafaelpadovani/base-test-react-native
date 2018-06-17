@@ -4,8 +4,8 @@ import Api from '../lib/api';
 export function login(email, password) {
   return (dispatch, getState) => {
     Api.post('interview-test/login', {
-      email: 'alex@user.com',
-      password: 'SuperSecr3t!'}).then( resp => {
+      email: email,
+      password: password}).then( resp => {
       if (resp.err) {
       }
       dispatch({
